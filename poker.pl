@@ -17,7 +17,6 @@ start_poker(Cards) :-
         Cards = [Response|Cards0]
     ).
 
-% To invoke: table_cards(Cards_on_table).
 ask_next_question(Cards) :-
     write('What cards are on the table? ' ),
     read_string(user, "\n", "\r", _, Response),
