@@ -2,7 +2,8 @@ start_poker(Cards) :-
     write('What cards are you holding? '),
     read_string(user, "\n", "\r", _, Response),
     (
-        Response == "that's all"
+        Response == "that's all"    % once you input the two cards just type this 
+        % length(Cards, 2)          % this line doesn't work (suggestions to make it take 2 inputs only?)
     ->
         ask_next_question(Cards)
     ; 
@@ -13,11 +14,11 @@ start_poker(Cards) :-
 ask_next_question(Cards) :-
     write('What cards are on the table? ' ),
     read_string(user, "\n", "\r", _, Response),
-    (   Response == "None"
+    (   Response == "None"                  % no cards on table
     ->  
         give_prob
     ;
-        Response == "Done"
+        Response == "Done"                  % Listed out all cards
     ->
         Cards = []
     ;
