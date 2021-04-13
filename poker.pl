@@ -18,7 +18,7 @@ ask_next_question(Cards) :-
     ->  
         give_prob
     ;
-        Response == "Done"                  % Listed out all cards
+        Response == "Done"                  % listed out all cards
     ->
         Cards = []
     ;
