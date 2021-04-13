@@ -1,5 +1,4 @@
-% To invoke: get_cards(Cards_you_hold).
-get_cards(Cards) :-
+start_poker(Cards) :-
     write('What cards are you holding? '),
     read_string(user, "\n", "\r", _, Response),
     (
@@ -10,12 +9,16 @@ get_cards(Cards) :-
     ->
         Cards = []
     ;
-        get_cards(Cards0),
+        Response == "that's all"
+    ->
+        ask_next_question(Cards)
+    ;
+        start_poker(Cards0),
         Cards = [Response|Cards0]
     ).
 
 % To invoke: table_cards(Cards_on_table).
-table_cards(Cards) :-
+ask_next_question(Cards) :-
     write('What cards are on the table? ' ),
     read_string(user, "\n", "\r", _, Response),
     (
@@ -26,10 +29,10 @@ table_cards(Cards) :-
     ->
         Cards = []
     ;
-        table_cards(Cards0),
+        ask_next_question(Cards0),
         Cards = [Response|Cards0]
     ).
-
+   
 % hand rankings
 hand_rank([[10,X],[jack,X],[queen,X],[king,X],[ace,X]], 'royal_flush').
 
