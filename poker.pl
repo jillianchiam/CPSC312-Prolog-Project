@@ -2,17 +2,10 @@ start_poker(Cards) :-
     write('What cards are you holding? '),
     read_string(user, "\n", "\r", _, Response),
     (
-        Response == "Stop";
-        Response == "Stop.";
-        Response == "stop.";
-        Response == "stop"
-    ->
-        Cards = []
-    ;
         Response == "that's all"
     ->
         ask_next_question(Cards)
-    ;
+    ; 
         start_poker(Cards0),
         Cards = [Response|Cards0]
     ).
@@ -20,17 +13,29 @@ start_poker(Cards) :-
 ask_next_question(Cards) :-
     write('What cards are on the table? ' ),
     read_string(user, "\n", "\r", _, Response),
-    (
-        Response == "Stop";
-        Response == "Stop.";
-        Response == "stop.";
-        Response == "stop"
+    (   Response == "None"
+    ->  
+        give_prob
+    ;
+        Response == "Done"
     ->
         Cards = []
     ;
         ask_next_question(Cards0),
         Cards = [Response|Cards0]
     ).
+
+
+
+% gives the probability based off the set of cards combined
+give_prob :-
+  write('The probability of *hand ranking* is 0.1');
+  % calculate prob of straight flush
+  write('The probability of Straight is ');
+  % calculate prob of royal flush
+  write('The probability of Three of a kind is ').
+  
+  
    
 % hand rankings
 hand_rank([[10,X],[jack,X],[queen,X],[king,X],[ace,X]], 'royal_flush').
