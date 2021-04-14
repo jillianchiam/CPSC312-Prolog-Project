@@ -1,7 +1,10 @@
 start_poker(Cards) :-
     write('What cards are you holding? '),
     read_string(user, "\n", "\r", _, Response),
-    (
+    (    Response == "end"
+    -> 
+        fail
+    ;
         Response == "that's all"    % once you input the two cards just type this 
         % length(Cards, 2)          % this line doesn't work (suggestions to make it take 2 inputs only?)
     ->
@@ -16,27 +19,49 @@ ask_next_question(Cards) :-
     read_string(user, "\n", "\r", _, Response),
     (   Response == "None"                  % no cards on table
     ->  
-        give_prob
+       end_game
     ;
         Response == "Done"                  % listed out all cards
     ->
         Cards = []
     ;
         ask_next_question(Cards0),
-        Cards = [Response|Cards0]
+        Cards = [Response|Cards0],
+        match_answer(Cards),
+        give_prob(Cards),
+        end_calc(Cards)
     ).
 
+match_answer(Cards) :-
+    match_list(Cards, ["10", "jack", "queen", "king", "ace"]),
+    write("royal flush found ");
+    match_list(Cards, ["h", "h", "h", "h", "h"]),
+    write("straight found ");
+    write("None found").
 
 
 % gives the probability based off the set of cards combined
-give_prob :-
-  write('The probability of *hand ranking* is 0.1');
-  % calculate prob of straight flush
-  write('The probability of Straight is ');
-  % calculate prob of royal flush
-  write('The probability of Three of a kind is ').
-  
-  
+give_prob(Cards):-
+    match_list(Cards, ["10", "jack", "queen", "king", "ace"]),
+    % calculate prob of royal flush
+    write("The probability of royal flush is 0.1");
+   
+    match_list(Cards, ["h", "h", "h", "h", "h"]),
+    write("The probability of Straight is ");
+
+    match_list(Cards, ["h", "h", "c", "h", "d"]),
+    % calculate prob of 3 of a kind
+    write("The probability of Three of a kind is ");
+    write("No rank found").
+    
+match_list(List1, List2) :-
+    forall(member(Element,List1), member(Element,List2)).
+
+end_game :-
+  write('Game is over').
+
+end_calc(X):-
+  writeln(X).
    
 % hand rankings
 hand_rank([[10,X],[jack,X],[queen,X],[king,X],[ace,X]], 'royal_flush').
