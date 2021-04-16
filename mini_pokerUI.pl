@@ -202,13 +202,13 @@ match_answer(Cards) :-
     match_list(Cards, ["2 same suit"]),
     write("two of a kind found \n");
     
-    match_list(Cards, ["3 same suit", "1 table card matches"]),
+    match_list(Cards, ["2 same suit", "1 table card matches"]),
     write("three of a kind found \n");
 
-    match_list(Cards, ["3 same suit", "2 table cards matches"]),
+    match_list(Cards, ["2 same suit", "2 table cards matches"]),
     write("four of a kind found \n");
 
-    match_list(Cards, ["3 same suit", "3 table cards matches"]),
+    match_list(Cards, ["2 same suit", "3 table cards matches"]),
     write("five of a kind found \n");
 
     match_list(Cards, []),
