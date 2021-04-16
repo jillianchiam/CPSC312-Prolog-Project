@@ -11,7 +11,6 @@ Example:
 ?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s]]).
 
 The best hand is a Straight.
-true.
 ```
 
 **poker/2** takes in a list of cards, a desired hand, and determines what the next card has to be in order to form the desired hand. <br />
@@ -20,5 +19,9 @@ The desired hand should be one of: ````[royal_flush, straight_flush, four_of_a_k
 Example:
 
 ```
-?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s]], straight).
+?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s]], straight). 
+
+You are missing any Jack.
 ```
+
+If you are expanding on this project, I would suggest using **poker_raw/2** instead of the other two.
