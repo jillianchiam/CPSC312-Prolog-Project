@@ -1,29 +1,15 @@
 # CPSC312-Prolog-Project
 
-How to use the poker analyzer:
+% Poker Hand Evaluator is a tool that helps poker players determine the hand have, as well as the cards needed to form an ideal hand.
 
-Example:
-Suppose you are playing Poker, and it is currently the Flop. You are holding Ace of Spades, King of Diamonds. The community cards are 10 of Spades, Ace of Diamonds, Queen of Spades.
-You may ask: What is my best hand? We find out using the following query:
-```
-?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s]], Best_Hand).
-Best_Hand = pair .
-```
-Hence you are holding a Pair. Next you may ask: What does the next card have to be in order for me to get a Straight?
-```
-?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s],[River_Face,River_Suite]], straight).
-River_Face = jack .
-```
-Hence you need a Jack. The suite doesn't matter and is left unspecified.
-Suppose the River reveals a Jack of Spades. Perfect! You should have a straight. Let's check this:
-```
-?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s],[jack,s]], Best_Hand).
-Best_Hand = straight .
-```
-There is one round remaining. Is it possible for you to get a Royal Flush from this spot?
-```
-?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s],[jack,s],[Turn_Face,Turn_Suite]], royal_flush). 
-Turn_Face = king,
-Turn_Suite = s .
-```
-Yes, but the last community card has to be precisely a King of Spades. Good luck!
+% poker/1 takes in a list of cards and returns the best poker hand that can be formed.
+% Each [Card] should be input as [Face, Suite]. Use [jack, queen, king, ace] for face cards. Suite notation does not matter, as long as you are consistent.
+
+% Example:
+%   ?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s]]).
+
+% poker/2 takes in a list of cards, a desired hand, and determines what the next card has to be in order to form the desired hand.
+% The desired hand should be one of: [royal_flush, straight_flush, four_of_a_kind, full_house, flush, straight, three_of_a_kind, two_pair, pair, high_card].
+
+% Example:
+%   ?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s]], straight).
