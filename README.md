@@ -13,5 +13,5 @@ Example:
 The desired hand should be one of: ````[royal_flush, straight_flush, four_of_a_kind, full_house, flush, straight, three_of_a_kind, two_pair, pair, high_card].````
 
 Example:
-   
-   ?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s]], straight).
+
+`?- poker([[ace,s],[king,d],[10,s],[ace,d],[queen,s]], straight)`.
