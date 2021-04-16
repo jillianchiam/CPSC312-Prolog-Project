@@ -30,7 +30,7 @@ same_cards(Cards):-
 
 % Likewise, to find out if you have 3 same suit, type '2 same suit'when asked what cards you have in hand, press enter, 
 
-% followed by'1 table card matches 2 cards in hand' (type all these without '' marks, eg: 
+% followed by'1 table card matches' (type all these without '' marks, eg: 
 
 % What cards are you holding? 2 same suit   <-- correct
 % What cards are you holding? '2 same suit' <-- incorrect
@@ -202,13 +202,13 @@ match_answer(Cards) :-
     match_list(Cards, ["2 same suit"]),
     write("two of a kind found \n");
     
-    match_list(Cards, ["3 same suit", "1 table card matches cards in hand"]),
+    match_list(Cards, ["3 same suit", "1 table card matches"]),
     write("three of a kind found \n");
 
-    match_list(Cards, ["3 same suit", "2 table cards matches cards in hand"]),
+    match_list(Cards, ["3 same suit", "2 table cards matches"]),
     write("four of a kind found \n");
 
-    match_list(Cards, ["3 same suit", "3 table card matches cards in hand"]),
+    match_list(Cards, ["3 same suit", "3 table cards matches"]),
     write("five of a kind found \n");
 
     match_list(Cards, []),
