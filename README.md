@@ -25,3 +25,26 @@ You are missing any Jack.
 ```
 
 If you are expanding on this project, I would suggest using **poker_raw/2** instead of the other two.
+
+How to use Miniature UI (mini_pokerUI.pl):
+The mini UI interaction will ask the player a small series of questions to check a specific set of cards. In order to use it:
+1) There can only be a maximum of 5 cards (two in hand and three on the table).
+2) All cards must be of the same suit (all 5 cards are hearts or all 5 cards are spades etc.)
+as it will only tell you if you have a straight/royal flush or "X" of a kind (Hence, mini UI!), with "X" being 2,3,4 or 5
+To run it, type:
+```
+?- same_cards(Cards).
+
+```
+Followed by answering the prompts accordingly:
+```
+What cards are you holding? 10,h      <-- type 10,h if you have 10 of Hearts
+What cards are you holding? jack,h
+What cards are you holding? that's all
+What cards are on the table? queen,h
+What cards are on the table? king,h
+What cards are on the table? ace,h
+What cards are on the table? Done
+
+royal flush found.
+```
