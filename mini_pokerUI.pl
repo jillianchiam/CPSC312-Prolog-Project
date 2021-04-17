@@ -83,7 +83,7 @@ match_answer(Cards) :-
     write("royal flush found \n");
     match_list(Cards, ["10,d", "jack,d", "queen,d", "king,d", "ace,d"]),
     write("royal flush found \n");
-    match_list(Cards, ["10,s", "jack,s", "queen,s", "king,s", "aces,d"]),
+    match_list(Cards, ["10,s", "jack,s", "queen,s", "king,s", "ace,d"]),
     write("royal flush found \n");
     match_list(Cards, ["10,c", "jack,c", "queen,c", "king,c", "ace,c"]),
     write("royal flush found \n");
